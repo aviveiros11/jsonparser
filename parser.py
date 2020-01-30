@@ -1,6 +1,5 @@
 import json
 import csv
-from csv import DictWriter
 
 json_file = 'swagger.json'
 csv_file = 'apilist.csv'
@@ -79,8 +78,6 @@ def parse(file):
                         row.append(path)
                         row.append(action)
                         handle_cases(definition)
-
-                        print(row)
                         write_row_to_csv(row, csv_file)
                         row.clear()
 
