@@ -1,4 +1,4 @@
-.csv
-venv
-.DS_store
-.idea
+*.csv
+*venv
+*.DS_store
+*.idea
