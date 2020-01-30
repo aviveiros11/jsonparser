@@ -1,0 +1,1010 @@
+Path,Action,Response,Params,Description,Summary,Tags
+/api/swagger/,get,200,,,,-swagger-
+/api/v1/delete_organization_inventory/,delete,204,,"Starts a background task to delete all properties & taxlots
+in an org.
+
+:DELETE: Expects 'org_id' for the organization.",Starts a background task to delete all properties & taxlots,-v1-
+/api/v1/get_default_building_detail_columns/,get,200,,"Get default columns for building detail view.
+
+front end is expecting a JSON object with an array of field names",Get default columns for building detail view.,-v1-
+/api/v1/set_default_building_detail_columns/,post,201,,,,-v1-
+/api/v1/set_default_columns/,post,201,,,,-v1-
+/api/v2.1/portfolio_manager/report/,post,201,,"This API view makes a request to ESPM to generate and download a report based on a specific template.
+
+:param request: A request with a POST body containing the ESPM credentials (username and password) as well as
+a template key that contains one of the template objects retrieved using the /template_list/ endpoint
+:return: This API responds with a JSON object with two keys: status, which will be a string -
+either error or success.  If successful, a second key, properties, will hold the list of properties found in
+this generated report.  If not successful, a second key, message, will include an error description that can be
+presented on the UI.",This API view makes a request to ESPM to generate and download a report based on a specific template.,-v2.1-
+/api/v2.1/portfolio_manager/template_list/,post,201,,"This API view makes a request to ESPM for the list of available report templates, including root templates and
+child data requests.
+
+:param request: A request with a POST body containing the ESPM credentials (username and password)
+:return: This API responds with a JSON object with two keys: status, which will be a string -
+either error or success.  If successful, a second key, templates, will hold the list of templates from ESPM. If
+not successful, a second key, message, will include an error description that can be presented on the UI.","This API view makes a request to ESPM for the list of available report templates, including root templates and",-v2.1-
+/api/v2.1/properties/,get,200,-page--per_page--identifier--address_line_1--cycle--property--cycle_start--cycle_end--analysis_state-,Return all Properties available to user through specified org.,Return all Properties available to user through specified org.,-v2.1-
+/api/v2.1/properties/{id}/,get,200,-id--identifier--address_line_1--cycle--property--cycle_start--cycle_end--analysis_state-,Return a Property instance by pk if it is within specified org.,Return a Property instance by pk if it is within specified org.,-v2.1-
+/api/v2.1/properties/{id}/building_sync/,get,200,-id-,"Return BuildingSync representation of the property
+
+---",Return BuildingSync representation of the property,-v2.1-
+/api/v2.1/properties/{id}/hpxml/,get,200,-id-,"Return HPXML representation of the property
+
+---",Return HPXML representation of the property,-v2.1-
+/api/v2.1/properties/{id}/update_with_building_sync/,put,200,-id--state--property--cycle--org_id-,"Does not work in Swagger!
+
+Update an existing PropertyView with a building file. Currently only supports BuildingSync.
+---",Does not work in Swagger!,-v2.1-
+/api/v2.1/properties/{properties_pk}/notes/,get,200,-properties_pk-,"API endpoint for viewing and creating notes.
+
+        Returns::
+            [
+                {
+                    'id': Note's primary key
+                    'name': Superfluous name,
+                    'text': Note's text
+                }
+            ]
+
+---",API endpoint for viewing and creating notes.,-v2.1-
+/api/v2.1/properties/{properties_pk}/notes/,post,201,-properties_pk--data-,"API endpoint for viewing and creating notes.
+
+        Returns::
+            [
+                {
+                    'id': Note's primary key
+                    'name': Superfluous name,
+                    'text': Note's text
+                }
+            ]
+
+---",API endpoint for viewing and creating notes.,-v2.1-
+/api/v2.1/properties/{properties_pk}/notes/{id}/,get,200,-properties_pk--id-,"API endpoint for viewing and creating notes.
+
+        Returns::
+            [
+                {
+                    'id': Note's primary key
+                    'name': Superfluous name,
+                    'text': Note's text
+                }
+            ]
+
+---",API endpoint for viewing and creating notes.,-v2.1-
+/api/v2.1/properties/{properties_pk}/notes/{id}/,put,200,-properties_pk--id--data-,"API endpoint for viewing and creating notes.
+
+        Returns::
+            [
+                {
+                    'id': Note's primary key
+                    'name': Superfluous name,
+                    'text': Note's text
+                }
+            ]
+
+---",API endpoint for viewing and creating notes.,-v2.1-
+/api/v2.1/properties/{properties_pk}/notes/{id}/,patch,200,-properties_pk--id--data-,"API endpoint for viewing and creating notes.
+
+        Returns::
+            [
+                {
+                    'id': Note's primary key
+                    'name': Superfluous name,
+                    'text': Note's text
+                }
+            ]
+
+---",API endpoint for viewing and creating notes.,-v2.1-
+/api/v2.1/properties/{properties_pk}/notes/{id}/,delete,204,-properties_pk--id-,"API endpoint for viewing and creating notes.
+
+        Returns::
+            [
+                {
+                    'id': Note's primary key
+                    'name': Superfluous name,
+                    'text': Note's text
+                }
+            ]
+
+---",API endpoint for viewing and creating notes.,-v2.1-
+/api/v2.1/scenarios/,get,200,,API View for Scenarios. This only includes retrieve and list for now.,API View for Scenarios. This only includes retrieve and list for now.,-v2.1-
+/api/v2.1/scenarios/{id}/,get,200,-id-,API View for Scenarios. This only includes retrieve and list for now.,API View for Scenarios. This only includes retrieve and list for now.,-v2.1-
+/api/v2.1/tax_lot_properties/export/,post,201,-data-,"Download a csv of the TaxLot and Properties
+
+.. code-block::
+
+    {
+        ""ids"": [1,2,3],
+        ""columns"": [""tax_jurisdiction_tax_lot_id"", ""address_line_1"", ""property_view_id""]
+    }
+
+---",Download a csv of the TaxLot and Properties,-v2.1-
+/api/v2.1/taxlots/,get,200,-page--per_page-,"List all the properties
+---",List all the properties,-v2.1-
+/api/v2.1/taxlots/batch_delete/,delete,204,,"Batch delete several tax lots
+---",Batch delete several tax lots,-v2.1-
+/api/v2.1/taxlots/columns/,get,200,,"List all tax lot columns
+---",List all tax lot columns,-v2.1-
+/api/v2.1/taxlots/cycles/,post,201,-data-,"List all the taxlots with all columns
+---",List all the taxlots with all columns,-v2.1-
+/api/v2.1/taxlots/filter/,post,201,-data-,"List all the properties
+---",List all the properties,-v2.1-
+/api/v2.1/taxlots/mappable_columns/,get,200,,List only taxlot columns that are mappable,List only taxlot columns that are mappable,-v2.1-
+/api/v2.1/taxlots/merge/,post,201,-data-,"Merge multiple tax lot records into a single new record, and run this
+new record through a match and merge round within it's current Cycle.
+---","Merge multiple tax lot records into a single new record, and run this",-v2.1-
+/api/v2.1/taxlots/{id}/,get,200,-id-,"Get taxlot details
+---",Get taxlot details,-v2.1-
+/api/v2.1/taxlots/{id}/,put,200,-id--data-,"Update a taxlot and run the updated record through a match and merge
+round within it's current Cycle.
+---",Update a taxlot and run the updated record through a match and merge,-v2.1-
+/api/v2.1/taxlots/{id}/links/,post,201,-id--data-,"Get taxlot details for each linked taxlot across org cycles
+---",Get taxlot details for each linked taxlot across org cycles,-v2.1-
+/api/v2.1/taxlots/{id}/match_merge_link/,post,201,-id--data-,"Runs match merge link for an individual taxlot.
+
+Note that this method can return a view_id of None if the given -View
+was not involved in a merge.",Runs match merge link for an individual taxlot.,-v2.1-
+/api/v2.1/taxlots/{id}/pair/,put,200,-id--data-,"Pair a property to this taxlot
+---",Pair a property to this taxlot,-v2.1-
+/api/v2.1/taxlots/{id}/properties/,get,200,-id-,Get related properties for this tax lot,Get related properties for this tax lot,-v2.1-
+/api/v2.1/taxlots/{id}/unmerge/,post,201,-id--data-,"Unmerge a taxlot view into two taxlot views
+---",Unmerge a taxlot view into two taxlot views,-v2.1-
+/api/v2.1/taxlots/{id}/unpair/,put,200,-id--data-,"Unpair a property from this taxlot
+---",Unpair a property from this taxlot,-v2.1-
+/api/v2.1/taxlots/{taxlots_pk}/notes/,get,200,-taxlots_pk-,"API endpoint for viewing and creating notes.
+
+        Returns::
+            [
+                {
+                    'id': Note's primary key
+                    'name': Superfluous name,
+                    'text': Note's text
+                }
+            ]
+
+---",API endpoint for viewing and creating notes.,-v2.1-
+/api/v2.1/taxlots/{taxlots_pk}/notes/,post,201,-taxlots_pk--data-,"API endpoint for viewing and creating notes.
+
+        Returns::
+            [
+                {
+                    'id': Note's primary key
+                    'name': Superfluous name,
+                    'text': Note's text
+                }
+            ]
+
+---",API endpoint for viewing and creating notes.,-v2.1-
+/api/v2.1/taxlots/{taxlots_pk}/notes/{id}/,get,200,-taxlots_pk--id-,"API endpoint for viewing and creating notes.
+
+        Returns::
+            [
+                {
+                    'id': Note's primary key
+                    'name': Superfluous name,
+                    'text': Note's text
+                }
+            ]
+
+---",API endpoint for viewing and creating notes.,-v2.1-
+/api/v2.1/taxlots/{taxlots_pk}/notes/{id}/,put,200,-taxlots_pk--id--data-,"API endpoint for viewing and creating notes.
+
+        Returns::
+            [
+                {
+                    'id': Note's primary key
+                    'name': Superfluous name,
+                    'text': Note's text
+                }
+            ]
+
+---",API endpoint for viewing and creating notes.,-v2.1-
+/api/v2.1/taxlots/{taxlots_pk}/notes/{id}/,patch,200,-taxlots_pk--id--data-,"API endpoint for viewing and creating notes.
+
+        Returns::
+            [
+                {
+                    'id': Note's primary key
+                    'name': Superfluous name,
+                    'text': Note's text
+                }
+            ]
+
+---",API endpoint for viewing and creating notes.,-v2.1-
+/api/v2.1/taxlots/{taxlots_pk}/notes/{id}/,delete,204,-taxlots_pk--id-,"API endpoint for viewing and creating notes.
+
+        Returns::
+            [
+                {
+                    'id': Note's primary key
+                    'name': Superfluous name,
+                    'text': Note's text
+                }
+            ]
+
+---",API endpoint for viewing and creating notes.,-v2.1-
+/api/v2/building_file/,get,200,-page--per_page-,,,-v2-
+/api/v2/building_file/,post,201,-file_type--file--filename--property_state-,"Does not work in Swagger!
+
+Create a new Property from a building file.
+---",Does not work in Swagger!,-v2-
+/api/v2/building_file/{id}/,get,200,-id-,,,-v2-
+/api/v2/column_list_settings/,get,200,,API endpoint for returning Column List Settings,API endpoint for returning Column List Settings,-v2-
+/api/v2/column_list_settings/,post,201,-name--settings_location--inventory_type-,"Create a new list setting. The list of columns is an array of column primary keys. If using Swagger, then
+    this will be enters as a list with returns between each primary key.
+
+    JSON POST Example:
+
+        {
+            ""name"": ""some new name 3"",
+            ""settings_location"": ""List View Settings"",
+            ""inventory_type"": ""Tax Lot"",
+            ""columns"": [
+                {""id"": 1, ""pinned"": false, ""order"": 10},
+                {""id"": 5, ""pinned"": true, ""order"": 14},
+                {""id"": 7, ""pinned"": true, ""order"": 14}
+            ]
+        }","Create a new list setting. The list of columns is an array of column primary keys. If using Swagger, then",-v2-
+/api/v2/column_list_settings/{id}/,get,200,-id-,API endpoint for returning Column List Settings,API endpoint for returning Column List Settings,-v2-
+/api/v2/column_list_settings/{id}/,put,200,-id--name--settings_location--inventory_type-,API endpoint for returning Column List Settings,API endpoint for returning Column List Settings,-v2-
+/api/v2/column_list_settings/{id}/,patch,200,-id--name--settings_location--inventory_type-,API endpoint for returning Column List Settings,API endpoint for returning Column List Settings,-v2-
+/api/v2/column_list_settings/{id}/,delete,204,-id-,API endpoint for returning Column List Settings,API endpoint for returning Column List Settings,-v2-
+/api/v2/column_mapping_presets/,get,200,,Retrieves all presets for an organization.,Retrieves all presets for an organization.,-v2-
+/api/v2/column_mapping_presets/,post,201,,"Creates a new preset given appropriate request data. The body should
+contain only valid fields for ColumnMappingPreset objects.",Creates a new preset given appropriate request data. The body should,-v2-
+/api/v2/column_mapping_presets/suggestions/,post,201,,Retrieves suggestions given raw column headers.,Retrieves suggestions given raw column headers.,-v2-
+/api/v2/column_mapping_presets/{id}/,put,200,-id-,"Updates a preset given appropriate request data. The body should contain
+only valid fields for ColumnMappingPreset objects.",Updates a preset given appropriate request data. The body should contain,-v2-
+/api/v2/column_mappings/,get,200,-organization_id-,,,-v2-
+/api/v2/column_mappings/,post,201,-data-,,,-v2-
+/api/v2/column_mappings/delete_all/,post,201,-data-,"Delete all column mappings for an organization
+---",Delete all column mappings for an organization,-v2-
+/api/v2/column_mappings/{id}/,get,200,-id--organization_id-,,,-v2-
+/api/v2/column_mappings/{id}/,put,200,-id--organization_id--data-,,,-v2-
+/api/v2/column_mappings/{id}/,patch,200,-id--organization_id--data-,,,-v2-
+/api/v2/column_mappings/{id}/,delete,204,-id--organization_id-,,,-v2-
+/api/v2/columns/,get,200,-organization_id--inventory_type--only_used-,"Retrieves all columns for the user's organization including the raw database columns. Will
+return all the columns across both the Property and Tax Lot tables. The related field will
+be true if the column came from the other table that is not the 'inventory_type' (which
+defaults to Property)
+
+This is the same results as calling /api/v2/<inventory_type>/columns/?organization_id={}",Retrieves all columns for the user's organization including the raw database columns. Will,-v2-
+/api/v2/columns/,post,201,-data-,,,-v2-
+/api/v2/columns/add_column_names/,get,200,,"Allow columns to be added based on an existing record.
+This may be necessary to make column selections available when
+records are upload through API endpoint rather than the frontend.",Allow columns to be added based on an existing record.,-v2-
+/api/v2/columns/delete_all/,post,201,-data-,"Delete all columns for an organization. This method is typically not recommended if there
+are data in the inventory as it will invalidate all extra_data fields. This also removes
+all the column mappings that existed.
+
+---",Delete all columns for an organization. This method is typically not recommended if there,-v2-
+/api/v2/columns/{id}/,get,200,-id--organization_id--inventory_type--only_used-,"Retrieves a column (Column)
+
+    type:
+        status:
+            required: true
+            type: string
+            description: Either success or error
+        column:
+            required: true
+            type: dictionary
+            description: Returns a dictionary of a full column structure with keys such as
+                         keys ''name'', ''id'', ''is_extra_data'', ''column_name'',
+                         ''table_name'',...
+    parameters:
+        - name: organization_id
+          description: The organization_id for this user's organization
+          required: true
+          paramType: query",Retrieves a column (Column),-v2-
+/api/v2/columns/{id}/,put,200,-id--organization_id--inventory_type--only_used--data-,,,-v2-
+/api/v2/columns/{id}/,patch,200,-id--organization_id--inventory_type--only_used--data-,,,-v2-
+/api/v2/columns/{id}/,delete,204,-id--organization_id--inventory_type--only_used-,,,-v2-
+/api/v2/columns/{id}/rename/,post,201,-id--data-,,,-v2-
+/api/v2/cycles/,get,200,-name--start_lte--end_gte--year-,"Return all cycles available to user through user`s specified org.
+
+    :GET: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: name
+        :Description: optional name for filtering cycles
+        :required: false
+        :Parameter: start_lte
+        :Description: optional iso date for filtering by cycles
+            that start on or before the given date
+        :required: false
+        :Parameter: end_gte
+        :Description: optional iso date for filtering by cycles
+            that end on or after the given date
+        :required: false",Return all cycles available to user through user`s specified org.,-v2-
+/api/v2/cycles/,post,201,-name--start--end-,"Create a new cycle within user`s specified org.
+
+    :POST: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: name
+        :Description: cycle name
+        :required: true
+        :Parameter: start
+        :Description: cycle start date. format: ``YYYY-MM-DDThh:mm``
+        :required: true
+        :Parameter: end
+        :Description: cycle end date. format: ``YYYY-MM-DDThh:mm``
+        :required: true",Create a new cycle within user`s specified org.,-v2-
+/api/v2/cycles/{id}/,get,200,-id--name--start_lte--end_gte--year-,"Return a cycle instance by pk if it is within user`s specified org.
+
+    :GET: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: cycle pk
+        :Description: id for desired cycle
+        :required: true",Return a cycle instance by pk if it is within user`s specified org.,-v2-
+/api/v2/cycles/{id}/,put,200,-id--name--start--end--name--start_lte--end_gte--year-,"Update a cycle record.
+
+    :PUT: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: cycle pk
+        :Description: id for desired cycle
+        :required: true
+        :Parameter: name
+        :Description: cycle name
+        :required: true
+        :Parameter: start
+        :Description: cycle start date. format: ``YYYY-MM-DDThh:mm``
+        :required: true
+        :Parameter: end
+        :Description: cycle end date. format: ``YYYY-MM-DDThh:mm``
+        :required: true",Update a cycle record.,-v2-
+/api/v2/cycles/{id}/,patch,200,-id--name--start--end--name--start_lte--end_gte--year-,"Update one or more fields on an existing cycle.
+
+    :PUT: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: cycle pk
+        :Description: id for desired cycle
+        :required: true
+        :Parameter: name
+        :Description: cycle name
+        :required: false
+        :Parameter: start
+        :Description: cycle start date. format: ``YYYY-MM-DDThh:mm``
+        :required: false
+        :Parameter: end
+        :Description: cycle end date. format: ``YYYY-MM-DDThh:mm``
+        :required: false",Update one or more fields on an existing cycle.,-v2-
+/api/v2/cycles/{id}/,delete,204,-id--name--start_lte--end_gte--year-,"Remove an existing cycle.
+
+    :DELETE: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: cycle pk
+        :Description: id for desired cycle
+        :required: true",Remove an existing cycle.,-v2-
+/api/v2/data_quality_checks/,post,201,,"This API endpoint will create a new cleansing operation process in the background,
+on potentially a subset of properties/taxlots, and return back a query key
+---","This API endpoint will create a new cleansing operation process in the background,",-v2-
+/api/v2/data_quality_checks/data_quality_rules/,get,200,,"Returns the data_quality rules for an org.
+---",Returns the data_quality rules for an org.,-v2-
+/api/v2/data_quality_checks/reset_all_data_quality_rules/,put,200,,"Resets an organization's data data_quality rules
+---",Resets an organization's data data_quality rules,-v2-
+/api/v2/data_quality_checks/reset_default_data_quality_rules/,put,200,,"Resets an organization's data data_quality rules
+---",Resets an organization's data data_quality rules,-v2-
+/api/v2/data_quality_checks/results/,get,200,,"Return the result of the data quality based on the ID that was given during the
+creation of the data quality task. Note that it is not related to the object in the
+database, since the results are stored in redis!",Return the result of the data quality based on the ID that was given during the,-v2-
+/api/v2/data_quality_checks/save_data_quality_rules/,post,201,,"Saves an organization's settings: name, query threshold, shared fields.
+The method passes in all the fields again, so it is okay to remove
+all the rules in the db, and just recreate them (albeit inefficient)
+---","Saves an organization's settings: name, query threshold, shared fields.",-v2-
+/api/v2/data_quality_checks/{id}/csv/,get,200,-id-,"Download a csv of the data quality checks by the pk which is the cache_key
+---",Download a csv of the data quality checks by the pk which is the cache_key,-v2-
+/api/v2/datasets/,get,200,,"Retrieves all datasets for the user's organization.
+---",Retrieves all datasets for the user's organization.,-v2-
+/api/v2/datasets/,post,201,,"Creates a new empty dataset (ImportRecord).
+---",Creates a new empty dataset (ImportRecord).,-v2-
+/api/v2/datasets/count/,get,200,,"Retrieves the number of datasets for an org.
+---",Retrieves the number of datasets for an org.,-v2-
+/api/v2/datasets/{id}/,get,200,-id-,"Retrieves a dataset (ImportRecord).
+---",Retrieves a dataset (ImportRecord).,-v2-
+/api/v2/datasets/{id}/,put,200,-id-,"Updates the name of a dataset (ImportRecord).
+---",Updates the name of a dataset (ImportRecord).,-v2-
+/api/v2/datasets/{id}/,delete,204,-id-,"Deletes a dataset (ImportRecord).
+---",Deletes a dataset (ImportRecord).,-v2-
+/api/v2/export_reports_data/,get,200,,,,-v2-
+/api/v2/gbr_properties/,get,200,-page--per_page-,Return all Properties available to user through specified org.,Return all Properties available to user through specified org.,-v2-
+/api/v2/gbr_properties/,post,201,-created--updated--campus--parent_property-,Create a new Property within user`s specified org.,Create a new Property within user`s specified org.,-v2-
+/api/v2/gbr_properties/{id}/,get,200,-id-,Return a Property instance by pk if it is within specified org.,Return a Property instance by pk if it is within specified org.,-v2-
+/api/v2/gbr_properties/{id}/,put,200,-id--created--updated--campus--parent_property-,Update a Property record.,Update a Property record.,-v2-
+/api/v2/gbr_properties/{id}/,patch,200,-id--created--updated--campus--parent_property-,Update one or more fields on an existing Property.,Update one or more fields on an existing Property.,-v2-
+/api/v2/gbr_properties/{id}/,delete,204,-id-,Remove an existing Property.,Remove an existing Property.,-v2-
+/api/v2/geocode/api_key_exists/,get,200,,,,-v2-
+/api/v2/geocode/confidence_summary/,post,201,,,,-v2-
+/api/v2/geocode/geocode_by_ids/,post,201,,,,-v2-
+/api/v2/get_aggregated_property_report_data/,get,200,,,,-v2-
+/api/v2/get_property_report_data/,get,200,,,,-v2-
+/api/v2/get_upload_details/,get,200,,Retrieves details about how to upload files to this instance.,Retrieves details about how to upload files to this instance.,-v2-
+/api/v2/green_assessment_properties/,get,200,-page--per_page--year--assessment--rating--view-,"Return all green assessment properties available to user through
+    associated green assessment via specified organization.",Return all green assessment properties available to user through,-v2-
+/api/v2/green_assessment_properties/,post,201,-source--status--status_date--metric--rating--version--date--target_date--eligibility--expiration_date--urls--assessment--view--extra_data-,Create a new green assessment property within user`s specified org.,Create a new green assessment property within user`s specified org.,-v2-
+/api/v2/green_assessment_properties/{id}/,get,200,-id--year--assessment--rating--view-,"Return an assessment property instance by pk if its associated
+    assessment is within the specified organization.",Return an assessment property instance by pk if its associated,-v2-
+/api/v2/green_assessment_properties/{id}/,put,200,-id--source--status--status_date--metric--rating--version--date--target_date--eligibility--expiration_date--urls--assessment--view--extra_data--year--assessment--rating--view-,Update a green assessment property record.,Update a green assessment property record.,-v2-
+/api/v2/green_assessment_properties/{id}/,patch,200,-id--source--status--status_date--metric--rating--version--date--target_date--eligibility--expiration_date--urls--assessment--view--extra_data--year--assessment--rating--view-,Update one or more fields on an existing green assessment...,Update one or more fields on an existing green assessment...,-v2-
+/api/v2/green_assessment_properties/{id}/,delete,204,-id--year--assessment--rating--view-,Remove an existing green assessment property.,Remove an existing green assessment property.,-v2-
+/api/v2/green_assessment_properties/{id}/bedes_format/,get,200,-id-,Return an assessment property instance by pk in bedes format,Return an assessment property instance by pk in bedes format,-v2-
+/api/v2/green_assessment_properties/{id}/reso_format/,get,200,-id-,Return an assessment property instance by pk in reso format,Return an assessment property instance by pk in reso format,-v2-
+/api/v2/green_assessment_urls/,get,200,-page--per_page--property_assessment__id-,"Return green assessment urls available to user through specified org.
+
+    :GET: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true",Return green assessment urls available to user through specified org.,-v2-
+/api/v2/green_assessment_urls/,post,201,-url--description--property_assessment-,"Create a new green assessment url.
+
+    :POST: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: url
+        :Description: link to rating or scoring details for premises
+        :required: true
+        :Parameter: property_assessment
+        :Description: id for associated green assessment url
+        :required: true",Create a new green assessment url.,-v2-
+/api/v2/green_assessment_urls/{id}/,get,200,-id--property_assessment__id-,"Return a green assessment url instance by pk if its associated
+    assessment property is within the specified organization.
+
+    :GET: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: green assessment url pk
+        :Description: id for desired green assessment url
+        :required: true",Return a green assessment url instance by pk if its associated,-v2-
+/api/v2/green_assessment_urls/{id}/,put,200,-id--url--description--property_assessment--property_assessment__id-,"Update a green assessment url record.
+
+    :PUT: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: url
+        :Description: link to rating or scoring details for premises
+        :required: true
+        :Parameter: property_assessment
+        :Description: id for associated green assessment url
+        :required: true",Update a green assessment url record.,-v2-
+/api/v2/green_assessment_urls/{id}/,patch,200,-id--url--description--property_assessment--property_assessment__id-,"Update one or more fields on an existing green assessment url.
+
+    :PUT: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: url
+        :Description: link to rating or scoring details for premises
+        :required: false
+        :Parameter: property_assessment
+        :Description: id for associated green assessment url
+        :required: false",Update one or more fields on an existing green assessment url.,-v2-
+/api/v2/green_assessment_urls/{id}/,delete,204,-id--property_assessment__id-,"Remove an existing green assessment url.
+
+    :DELETE: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: green assessment url pk
+        :Description: id for desired green assessment url
+        :required: true",Remove an existing green assessment url.,-v2-
+/api/v2/green_assessments/,get,200,-page--per_page--name--award_body--recognition_type--name_icontains--award_body_icontains-,"Return all green assessments available to user through specified org.
+
+    :GET: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true",Return all green assessments available to user through specified org.,-v2-
+/api/v2/green_assessments/,post,201,-name--award_body--recognition_type--description--is_numeric_score--is_integer_score--validity_duration-,"Create a new green assessment within user`s specified org.
+
+    :POST: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: name
+        :Description: green assessment name
+        :required: false
+        :Parameter: award_body
+        :Description: name of body issuing assessment
+        :required: false
+        :Parameter: recognition_type
+        :Description: recognition type selection
+        :required: false
+        :Parameter: is_numeric_score
+        :Description: score is numeric value if true
+        :required: false
+        :Parameter: is_integer_score
+        :Description: score is integer value if true
+        :required: false
+        :Parameter: validity_duration
+        :Description: duration of assessment validity. ``[DD] [HH:[MM:]]``
+        :required: false",Create a new green assessment within user`s specified org.,-v2-
+/api/v2/green_assessments/{id}/,get,200,-id--name--award_body--recognition_type--name_icontains--award_body_icontains-,"Return a green assessment instance by pk if it is within specified org.
+
+    :GET: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: green assessment pk
+        :Description: id for desired green assessment
+        :required: true",Return a green assessment instance by pk if it is within specified org.,-v2-
+/api/v2/green_assessments/{id}/,put,200,-id--name--award_body--recognition_type--description--is_numeric_score--is_integer_score--validity_duration--name--award_body--recognition_type--name_icontains--award_body_icontains-,"Update a green assessment record.
+
+    :PUT: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: green assessment pk
+        :Description: id for desired green assessment
+        :required: true
+        :Parameter: name
+        :Description: green assessment name
+        :required: false
+        :Parameter: award_body
+        :Description: name of body issuing assessment
+        :required: false
+        :Parameter: recognition_type
+        :Description: recognition type selection
+        :required: false
+        :Parameter: is_numeric_score
+        :Description: score is numeric value if true
+        :required: false
+        :Parameter: is_integer_score
+        :Description: score is integer value if true
+        :required: false
+        :Parameter: validity_duration
+        :Description: duration of assessment validity. ``[DD] [HH:[MM:]]``
+        :required: false",Update a green assessment record.,-v2-
+/api/v2/green_assessments/{id}/,patch,200,-id--name--award_body--recognition_type--description--is_numeric_score--is_integer_score--validity_duration--name--award_body--recognition_type--name_icontains--award_body_icontains-,"Update one or more fields on an existing green assessment.
+
+    :PUT: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: green assessment pk
+        :Description: id for desired green assessment
+        :required: true
+        :Parameter: name
+        :Description: green assessment name
+        :required: false
+        :Parameter: award_body
+        :Description: name of body issuing assessment
+        :required: false
+        :Parameter: recognition_type
+        :Description: recognition type selection
+        :required: false
+        :Parameter: is_numeric_score
+        :Description: score is numeric value if true
+        :required: false
+        :Parameter: is_integer_score
+        :Description: score is integer value if true
+        :required: false
+        :Parameter: validity_duration
+        :Description: duration of assessment validity. ``[DD] [HH:[MM:]]``
+        :required: false",Update one or more fields on an existing green assessment.,-v2-
+/api/v2/green_assessments/{id}/,delete,204,-id--name--award_body--recognition_type--name_icontains--award_body_icontains-,"Remove an existing green assessment.
+
+    :DELETE: Expects organization_id in query string.
+    :Parameters:
+        :Parameter: organization_id
+        :Description: organization_id for this user`s organization
+        :required: true
+        :Parameter: green assessment pk
+        :Description: id for desired green assessment
+        :required: true",Remove an existing green assessment.,-v2-
+/api/v2/import_files/{id}/,get,200,-id-,"Retrieves details about an ImportFile.
+---",Retrieves details about an ImportFile.,-v2-
+/api/v2/import_files/{id}/,delete,204,-id-,"Returns suggested mappings from an uploaded file's headers to known
+data fields.
+---",Returns suggested mappings from an uploaded file's headers to known,-v2-
+/api/v2/import_files/{id}/data_quality_progress/,get,200,-id-,"Return the progress of the data quality check.
+---",Return the progress of the data quality check.,-v2-
+/api/v2/import_files/{id}/filtered_mapping_results/,post,201,-id-,"Retrieves a paginated list of Properties and Tax Lots for an import file after mapping.
+---",Retrieves a paginated list of Properties and Tax Lots for an import file after mapping.,-v2-
+/api/v2/import_files/{id}/first_five_rows/,get,200,-id-,"Retrieves the first five rows of an ImportFile.
+---",Retrieves the first five rows of an ImportFile.,-v2-
+/api/v2/import_files/{id}/mapping_done/,put,200,-id-,"Tell the backend that the mapping is complete.
+---",Tell the backend that the mapping is complete.,-v2-
+/api/v2/import_files/{id}/mapping_suggestions/,get,200,-id-,"Returns suggested mappings from an uploaded file's headers to known
+data fields.
+---",Returns suggested mappings from an uploaded file's headers to known,-v2-
+/api/v2/import_files/{id}/matching_and_geocoding_results/,get,200,-id-,"Retrieves the number of matched and unmatched properties & tax lots for
+a given ImportFile record.  Specifically for new imports
+
+:GET: Expects import_file_id corresponding to the ImportFile in question.",Retrieves the number of matched and unmatched properties & tax lots for,-v2-
+/api/v2/import_files/{id}/perform_mapping/,post,201,-id-,"Starts a background task to convert imported raw data into
+PropertyState and TaxLotState, using user's column mappings.
+---",Starts a background task to convert imported raw data into,-v2-
+/api/v2/import_files/{id}/raw_column_names/,get,200,-id-,"Retrieves a list of all column names from an ImportFile.
+---",Retrieves a list of all column names from an ImportFile.,-v2-
+/api/v2/import_files/{id}/save_column_mappings/,post,201,-id-,"Saves the mappings between the raw headers of an ImportFile and the
+destination fields in the `to_table_name` model which should be either
+PropertyState or TaxLotState
+
+Valid source_type values are found in ``seed.models.SEED_DATA_SOURCES``",Saves the mappings between the raw headers of an ImportFile and the,-v2-
+/api/v2/import_files/{id}/save_raw_data/,post,201,-id-,"Starts a background task to import raw data from an ImportFile
+into PropertyState objects as extra_data. If the cycle_id is set to
+year_ending then the cycle ID will be set to the year_ending column for each
+record in the uploaded file. Note that the year_ending flag is not yet enabled.
+---",Starts a background task to import raw data from an ImportFile,-v2-
+/api/v2/import_files/{id}/start_data_quality_checks/,post,201,-id-,"Starts a background task to attempt automatic matching between buildings
+in an ImportFile with other existing buildings within the same org.
+---",Starts a background task to attempt automatic matching between buildings,-v2-
+/api/v2/import_files/{id}/start_system_matching_and_geocoding/,post,201,-id-,"Starts a background task to attempt automatic matching between buildings
+in an ImportFile with other existing buildings within the same org.
+---",Starts a background task to attempt automatic matching between buildings,-v2-
+/api/v2/labels-property/,put,200,,Updates label assignments to inventory items.,Updates label assignments to inventory items.,-v2-
+/api/v2/labels-taxlot/,put,200,,Updates label assignments to inventory items.,Updates label assignments to inventory items.,-v2-
+/api/v2/labels/,get,200,,"API endpoint for viewing and creating labels.
+
+        Returns::
+            [
+                {
+                    'id': Label's primary key
+                    'name': Name given to label
+                    'color': Color of label,
+                    'organization_id': Id of organization label belongs to,
+                    'is_applied': Will be empty array if not applied to property/taxlots
+                }
+            ]
+
+---",API endpoint for viewing and creating labels.,-v2-
+/api/v2/labels/,post,201,-data-,"API endpoint for viewing and creating labels.
+
+        Returns::
+            [
+                {
+                    'id': Label's primary key
+                    'name': Name given to label
+                    'color': Color of label,
+                    'organization_id': Id of organization label belongs to,
+                    'is_applied': Will be empty array if not applied to property/taxlots
+                }
+            ]
+
+---",API endpoint for viewing and creating labels.,-v2-
+/api/v2/labels/filter/,post,201,-data-,"API endpoint for viewing and creating labels.
+
+        Returns::
+            [
+                {
+                    'id': Label's primary key
+                    'name': Name given to label
+                    'color': Color of label,
+                    'organization_id': Id of organization label belongs to,
+                    'is_applied': Will be empty array if not applied to property/taxlots
+                }
+            ]
+
+---",API endpoint for viewing and creating labels.,-v2-
+/api/v2/labels/{id}/,get,200,-id-,"API endpoint for viewing and creating labels.
+
+        Returns::
+            [
+                {
+                    'id': Label's primary key
+                    'name': Name given to label
+                    'color': Color of label,
+                    'organization_id': Id of organization label belongs to,
+                    'is_applied': Will be empty array if not applied to property/taxlots
+                }
+            ]
+
+---",API endpoint for viewing and creating labels.,-v2-
+/api/v2/labels/{id}/,put,200,-id--data-,"API endpoint for viewing and creating labels.
+
+        Returns::
+            [
+                {
+                    'id': Label's primary key
+                    'name': Name given to label
+                    'color': Color of label,
+                    'organization_id': Id of organization label belongs to,
+                    'is_applied': Will be empty array if not applied to property/taxlots
+                }
+            ]
+
+---",API endpoint for viewing and creating labels.,-v2-
+/api/v2/labels/{id}/,patch,200,-id--data-,"API endpoint for viewing and creating labels.
+
+        Returns::
+            [
+                {
+                    'id': Label's primary key
+                    'name': Name given to label
+                    'color': Color of label,
+                    'organization_id': Id of organization label belongs to,
+                    'is_applied': Will be empty array if not applied to property/taxlots
+                }
+            ]
+
+---",API endpoint for viewing and creating labels.,-v2-
+/api/v2/labels/{id}/,delete,204,-id-,"API endpoint for viewing and creating labels.
+
+        Returns::
+            [
+                {
+                    'id': Label's primary key
+                    'name': Name given to label
+                    'color': Color of label,
+                    'organization_id': Id of organization label belongs to,
+                    'is_applied': Will be empty array if not applied to property/taxlots
+                }
+            ]
+
+---",API endpoint for viewing and creating labels.,-v2-
+/api/v2/measures/,get,200,,"API View for measures. This only includes retrieve and list since the measures are immutable.
+
+The reset POST method is for resetting the measures back to the default list provided
+by BuildingSync enumeration.json file.",API View for measures. This only includes retrieve and list since the measures are immutable.,-v2-
+/api/v2/measures/reset/,post,201,-data-,"Reset all the measures back to the defaults (as provided by BuildingSync)
+---",Reset all the measures back to the defaults (as provided by BuildingSync),-v2-
+/api/v2/measures/{id}/,get,200,-id-,"API View for measures. This only includes retrieve and list since the measures are immutable.
+
+The reset POST method is for resetting the measures back to the default list provided
+by BuildingSync enumeration.json file.",API View for measures. This only includes retrieve and list since the measures are immutable.,-v2-
+/api/v2/meters/greenbutton_parsed_meters_confirmation/,post,201,,,,-v2-
+/api/v2/meters/parsed_meters_confirmation/,post,201,,,,-v2-
+/api/v2/meters/property_meter_usage/,post,201,,,,-v2-
+/api/v2/meters/property_meters/,post,201,,,,-v2-
+/api/v2/meters/valid_types_units/,get,200,,,,-v2-
+/api/v2/organizations/,get,200,,"Retrieves all orgs the user has access to.
+---",Retrieves all orgs the user has access to.,-v2-
+/api/v2/organizations/,post,201,,"Creates a new organization.
+---",Creates a new organization.,-v2-
+/api/v2/organizations/{id}/,get,200,-id-,"Retrieves a single organization by id.
+---",Retrieves a single organization by id.,-v2-
+/api/v2/organizations/{id}/,delete,204,-id-,"Starts a background task to delete an organization and all related data.
+---",Starts a background task to delete an organization and all related data.,-v2-
+/api/v2/organizations/{id}/add_user/,put,200,-id-,"Adds an existing user to an organization.
+---",Adds an existing user to an organization.,-v2-
+/api/v2/organizations/{id}/geocoding_columns/,get,200,-id-,"Retrieve all geocoding columns for an org.
+---",Retrieve all geocoding columns for an org.,-v2-
+/api/v2/organizations/{id}/match_merge_link/,post,201,-id-,"Run match_merge_link for an org.
+---",Run match_merge_link for an org.,-v2-
+/api/v2/organizations/{id}/match_merge_link_preview/,post,201,-id-,"Run match_merge_link preview for an org and record type.
+---",Run match_merge_link preview for an org and record type.,-v2-
+/api/v2/organizations/{id}/match_merge_link_result/,get,200,-id-,,,-v2-
+/api/v2/organizations/{id}/matching_criteria_columns/,get,200,-id-,"Retrieve all matching criteria columns for an org.
+---",Retrieve all matching criteria columns for an org.,-v2-
+/api/v2/organizations/{id}/query_threshold/,get,200,-id-,"Returns the ""query_threshold"" for an org.  Searches from
+members of sibling orgs must return at least this many buildings
+from orgs they do not belong to, or else buildings from orgs they
+don't belong to will be removed from the results.
+---","Returns the ""query_threshold"" for an org.  Searches from",-v2-
+/api/v2/organizations/{id}/remove_user/,delete,204,-id-,"Removes a user from an organization and deletes orphaned users.
+---",Removes a user from an organization and deletes orphaned users.,-v2-
+/api/v2/organizations/{id}/save_settings/,put,200,-id-,"Saves an organization's settings: name, query threshold, shared fields
+---","Saves an organization's settings: name, query threshold, shared fields",-v2-
+/api/v2/organizations/{id}/shared_fields/,get,200,-id-,"Retrieves all fields marked as shared for the organization. Will only return used fields.
+
+---",Retrieves all fields marked as shared for the organization. Will only return used fields.,-v2-
+/api/v2/organizations/{id}/sub_org/,post,201,-id-,"Creates a child org of a parent org.
+---",Creates a child org of a parent org.,-v2-
+/api/v2/organizations/{id}/users/,get,200,-id-,"Retrieve all users belonging to an org.
+---",Retrieve all users belonging to an org.,-v2-
+/api/v2/progress/{id}/,get,200,-id-,Get the progress (percent complete) for a task.,Get the progress (percent complete) for a task.,-v2-
+/api/v2/projects/,get,200,-page--per_page-,"Retrieves all projects for a given organization.
+
+:GET: Expects organization_id in query string.",Retrieves all projects for a given organization.,-v2-
+/api/v2/projects/,post,201,-data-,"Creates a new project
+
+:POST: Expects organization_id in query string.
+---",Creates a new project,-v2-
+/api/v2/projects/count/,get,200,,"Returns the number of projects within the org tree to which
+a user belongs.  Counts projects in parent orgs and sibling orgs.
+
+:GET: Expects organization_id in query string.
+---",Returns the number of projects within the org tree to which,-v2-
+/api/v2/projects/{id}/,get,200,-id-,"Retrieves details about a project.
+
+:GET: Expects organization_id in query string.
+---",Retrieves details about a project.,-v2-
+/api/v2/projects/{id}/,put,200,-id--data-,"Updates a project
+
+:PUT: Expects organization_id in query string.
+---",Updates a project,-v2-
+/api/v2/projects/{id}/,patch,200,-id--data-,"Updates a project. Allows partial update, i.e. only updated param s need be supplied.
+
+:PUT: Expects organization_id in query string.
+---","Updates a project. Allows partial update, i.e. only updated param s need be supplied.",-v2-
+/api/v2/projects/{id}/,delete,204,-id-,"Delete a project.
+
+:DELETE: Expects organization_id in query string.
+---",Delete a project.,-v2-
+/api/v2/projects/{id}/add/,put,200,-id--data-,"Add inventory to project
+:PUT: Expects organization_id in query string.
+---",Add inventory to project,-v2-
+/api/v2/projects/{id}/copy/,put,200,-id--data-,"Move or copy inventory from one project to another
+
+:PUT: Expects organization_id in query string.
+---",Move or copy inventory from one project to another,-v2-
+/api/v2/projects/{id}/move/,put,200,-id--data-,"Move or copy inventory from one project to another
+
+:PUT: Expects organization_id in query string.
+---",Move or copy inventory from one project to another,-v2-
+/api/v2/projects/{id}/remove/,put,200,-id--data-,"Remove inventory from  project
+:PUT: Expects organization_id in query string.
+---",Remove inventory from  project,-v2-
+/api/v2/projects/{id}/update/,put,200,-id--data-,"Updates extra information about the inventory/project relationship.
+In particular, whether the property/taxlot  is compliant
+and who approved it.
+
+:PUT: Expects organization_id in query string.
+---",Updates extra information about the inventory/project relationship.,-v2-
+/api/v2/properties/,get,200,-page--per_page-,"List all the properties	with all columns
+---",List all the properties	with all columns,-v2-
+/api/v2/properties/batch_delete/,delete,204,,"Batch delete several properties
+---",Batch delete several properties,-v2-
+/api/v2/properties/columns/,get,200,,List all property columns,List all property columns,-v2-
+/api/v2/properties/cycles/,post,201,-data-,"List all the properties	with all columns
+---",List all the properties	with all columns,-v2-
+/api/v2/properties/filter/,post,201,-data-,"List all the properties
+---",List all the properties,-v2-
+/api/v2/properties/mappable_columns/,get,200,,List only property columns that are mappable,List only property columns that are mappable,-v2-
+/api/v2/properties/merge/,post,201,-data-,"Merge multiple property records into a single new record, and run this
+new record through a match and merge round within it's current Cycle.
+---","Merge multiple property records into a single new record, and run this",-v2-
+/api/v2/properties/meters_exist/,post,201,-data-,"Check to see if the given Properties (given by ID) have Meters.
+---",Check to see if the given Properties (given by ID) have Meters.,-v2-
+/api/v2/properties/{id}/,get,200,-id-,"Get property details
+---",Get property details,-v2-
+/api/v2/properties/{id}/,put,200,-id--data-,"Update a property and run the updated record through a match and merge
+round within it's current Cycle.
+
+- looks up the property view
+- casts it as a PropertyState
+- builds a hash with all the same keys as the original property state
+- checks if any fields have changed
+- if nothing has changed, return 422 - Really?  Not sure how I feel about that one, it *is* processable
+- get the property audit log for this property state
+- if the new property state has extra_data, the original extra_data is update'd
+- and then whoa stuff about the audit log?
+- I'm going to assume 'Import Creation' is the key I'm looking for
+- create a serializer for the new property state
+- if it's valid, save this new serialized data to the db
+- assign it to the original property view and save the property view
+- create a new property audit log for this change
+- return a 200 if created
+
+---",Update a property and run the updated record through a match and merge,-v2-
+/api/v2/properties/{id}/delete/,delete,204,-id-,"Delete a single property state from a property_viewID. Not sure why we
+are deleting only the state, but it is matching the functionality that is in
+the batch_delete request.
+---",Delete a single property state from a property_viewID. Not sure why we,-v2-
+/api/v2/properties/{id}/delete_measures/,delete,204,-id-,"Delete measures. Allow the user to define which implementation type to delete
+---",Delete measures. Allow the user to define which implementation type to delete,-v2-
+/api/v2/properties/{id}/links/,post,201,-id--data-,"Get property details for each linked property across org cycles
+---",Get property details for each linked property across org cycles,-v2-
+/api/v2/properties/{id}/match_merge_link/,post,201,-id--data-,"Runs match merge link for an individual property.
+
+Note that this method can return a view_id of None if the given -View
+was not involved in a merge.",Runs match merge link for an individual property.,-v2-
+/api/v2/properties/{id}/measures/,get,200,-id-,"Get the list of measures for a property and the given cycle
+---",Get the list of measures for a property and the given cycle,-v2-
+/api/v2/properties/{id}/pair/,put,200,-id--data-,"Pair a taxlot to this property
+---",Pair a taxlot to this property,-v2-
+/api/v2/properties/{id}/taxlots/,get,200,-id-,Get related TaxLots for this property,Get related TaxLots for this property,-v2-
+/api/v2/properties/{id}/unmerge/,post,201,-id--data-,"Unmerge a property view into two property views
+---",Unmerge a property view into two property views,-v2-
+/api/v2/properties/{id}/unpair/,put,200,-id--data-,"Unpair a taxlot from this property
+---",Unpair a taxlot from this property,-v2-
+/api/v2/properties/{id}/update_measures/,put,200,-id--data-,"Update the measures applied to the building. There are two options, one for adding
+measures and one for removing measures.
+
+---","Update the measures applied to the building. There are two options, one for adding",-v2-
+/api/v2/property_states/,get,200,-page--per_page--energy_score--city--pm_parent_property_id--property_identifier-,Return all PropertyStates available to user through specified org.,Return all PropertyStates available to user through specified org.,-v2-
+/api/v2/property_states/,post,201,-extra_data--analysis_state--conditioned_floor_area--gross_floor_area--occupied_floor_area--site_eui--site_eui_modeled--source_eui_weather_normalized--source_eui--source_eui_modeled--site_eui_weather_normalized--generation_date--recent_sale_date--release_date--analysis_start_time--analysis_end_time--organization_id--source_type--data_state--merge_state--jurisdiction_property_id--custom_id_1--ubid--pm_parent_property_id--pm_property_id--home_energy_score_id--lot_number--property_name--address_line_1--address_line_2--city--state--postal_code--latitude--longitude--long_lat--centroid--bounding_box--property_footprint--geocoding_confidence--building_count--property_notes--property_type--year_ending--use_description--year_built--owner--owner_email--owner_telephone--owner_address--owner_city_state--owner_postal_code--energy_score--energy_alerts--space_alerts--building_certification--analysis_state_message--gross_floor_area_orig--conditioned_floor_area_orig--occupied_floor_area_orig--site_eui_orig--site_eui_weather_normalized_orig--site_eui_modeled_orig--source_eui_orig--source_eui_weather_normalized_orig--source_eui_modeled_orig--hash_object--import_file-,Create a new PropertyState within user`s specified org.,Create a new PropertyState within user`s specified org.,-v2-
+/api/v2/property_states/{id}/,get,200,-id--energy_score--city--pm_parent_property_id--property_identifier-,Return a PropertyState instance by pk if it is within specified org.,Return a PropertyState instance by pk if it is within specified org.,-v2-
+/api/v2/property_states/{id}/,put,200,-id--extra_data--analysis_state--conditioned_floor_area--gross_floor_area--occupied_floor_area--site_eui--site_eui_modeled--source_eui_weather_normalized--source_eui--source_eui_modeled--site_eui_weather_normalized--generation_date--recent_sale_date--release_date--analysis_start_time--analysis_end_time--organization_id--source_type--data_state--merge_state--jurisdiction_property_id--custom_id_1--ubid--pm_parent_property_id--pm_property_id--home_energy_score_id--lot_number--property_name--address_line_1--address_line_2--city--state--postal_code--latitude--longitude--long_lat--centroid--bounding_box--property_footprint--geocoding_confidence--building_count--property_notes--property_type--year_ending--use_description--year_built--owner--owner_email--owner_telephone--owner_address--owner_city_state--owner_postal_code--energy_score--energy_alerts--space_alerts--building_certification--analysis_state_message--gross_floor_area_orig--conditioned_floor_area_orig--occupied_floor_area_orig--site_eui_orig--site_eui_weather_normalized_orig--site_eui_modeled_orig--source_eui_orig--source_eui_weather_normalized_orig--source_eui_modeled_orig--hash_object--import_file--energy_score--city--pm_parent_property_id--property_identifier-,Update a PropertyState record.,Update a PropertyState record.,-v2-
+/api/v2/property_states/{id}/,patch,200,-id--extra_data--analysis_state--conditioned_floor_area--gross_floor_area--occupied_floor_area--site_eui--site_eui_modeled--source_eui_weather_normalized--source_eui--source_eui_modeled--site_eui_weather_normalized--generation_date--recent_sale_date--release_date--analysis_start_time--analysis_end_time--organization_id--source_type--data_state--merge_state--jurisdiction_property_id--custom_id_1--ubid--pm_parent_property_id--pm_property_id--home_energy_score_id--lot_number--property_name--address_line_1--address_line_2--city--state--postal_code--latitude--longitude--long_lat--centroid--bounding_box--property_footprint--geocoding_confidence--building_count--property_notes--property_type--year_ending--use_description--year_built--owner--owner_email--owner_telephone--owner_address--owner_city_state--owner_postal_code--energy_score--energy_alerts--space_alerts--building_certification--analysis_state_message--gross_floor_area_orig--conditioned_floor_area_orig--occupied_floor_area_orig--site_eui_orig--site_eui_weather_normalized_orig--site_eui_modeled_orig--source_eui_orig--source_eui_weather_normalized_orig--source_eui_modeled_orig--hash_object--import_file--energy_score--city--pm_parent_property_id--property_identifier-,Update one or more fields on an existing PropertyState.,Update one or more fields on an existing PropertyState.,-v2-
+/api/v2/property_states/{id}/,delete,204,-id--energy_score--city--pm_parent_property_id--property_identifier-,Remove an existing PropertyState.,Remove an existing PropertyState.,-v2-
+/api/v2/property_views/,get,200,-page--per_page--cycle--property--cycle_start--cycle_end--property_identifier--address_line_1--address_line_2--city--state--postal_code-,Return all PropertyViews available to user through specified org.,Return all PropertyViews available to user through specified org.,-v2-
+/api/v2/property_views/,post,201,-state--property--cycle--org_id-,Create a new PropertyView within user`s specified org.,Create a new PropertyView within user`s specified org.,-v2-
+/api/v2/property_views/{id}/,get,200,-id--cycle--property--cycle_start--cycle_end--property_identifier--address_line_1--address_line_2--city--state--postal_code-,Return a PropertyView instance by pk if it is within specified org.,Return a PropertyView instance by pk if it is within specified org.,-v2-
+/api/v2/property_views/{id}/,put,200,-id--state--property--cycle--org_id--cycle--property--cycle_start--cycle_end--property_identifier--address_line_1--address_line_2--city--state--postal_code-,Update a PropertyView record.,Update a PropertyView record.,-v2-
+/api/v2/property_views/{id}/,patch,200,-id--state--property--cycle--org_id--cycle--property--cycle_start--cycle_end--property_identifier--address_line_1--address_line_2--city--state--postal_code-,Update one or more fields on an existing PropertyView.,Update one or more fields on an existing PropertyView.,-v2-
+/api/v2/property_views/{id}/,delete,204,-id--cycle--property--cycle_start--cycle_end--property_identifier--address_line_1--address_line_2--city--state--postal_code-,Remove an existing PropertyView.,Remove an existing PropertyView.,-v2-
+/api/v2/reverse_and_test/no_arg_reverse/,get,200,,"Test a reverse call easily
+---",Test a reverse call easily,-v2-
+/api/v2/reverse_and_test/one_arg_reverse/,get,200,,"Test a one arg reverse call easily
+---",Test a one arg reverse call easily,-v2-
+/api/v2/reverse_and_test/show_file_type/,get,200,,"Show how to use a multipart file variable type
+---",Show how to use a multipart file variable type,-v2-
+/api/v2/reverse_and_test/try_coded_reverse/,get,200,,Tries to reverse a string that is hardcoded in this view,Tries to reverse a string that is hardcoded in this view,-v2-
+/api/v2/schema/,get,200,,Returns a hash of all API endpoints and their descriptions.,Returns a hash of all API endpoints and their descriptions.,-v2-
+/api/v2/taxlots/,get,200,-page--per_page-,"List all the properties
+---",List all the properties,-v2-
+/api/v2/taxlots/batch_delete/,delete,204,,"Batch delete several tax lots
+---",Batch delete several tax lots,-v2-
+/api/v2/taxlots/columns/,get,200,,"List all tax lot columns
+---",List all tax lot columns,-v2-
+/api/v2/taxlots/cycles/,post,201,-data-,"List all the taxlots with all columns
+---",List all the taxlots with all columns,-v2-
+/api/v2/taxlots/filter/,post,201,-data-,"List all the properties
+---",List all the properties,-v2-
+/api/v2/taxlots/mappable_columns/,get,200,,List only taxlot columns that are mappable,List only taxlot columns that are mappable,-v2-
+/api/v2/taxlots/merge/,post,201,-data-,"Merge multiple tax lot records into a single new record, and run this
+new record through a match and merge round within it's current Cycle.
+---","Merge multiple tax lot records into a single new record, and run this",-v2-
+/api/v2/taxlots/{id}/,get,200,-id-,"Get taxlot details
+---",Get taxlot details,-v2-
+/api/v2/taxlots/{id}/,put,200,-id--data-,"Update a taxlot and run the updated record through a match and merge
+round within it's current Cycle.
+---",Update a taxlot and run the updated record through a match and merge,-v2-
+/api/v2/taxlots/{id}/links/,post,201,-id--data-,"Get taxlot details for each linked taxlot across org cycles
+---",Get taxlot details for each linked taxlot across org cycles,-v2-
+/api/v2/taxlots/{id}/match_merge_link/,post,201,-id--data-,"Runs match merge link for an individual taxlot.
+
+Note that this method can return a view_id of None if the given -View
+was not involved in a merge.",Runs match merge link for an individual taxlot.,-v2-
+/api/v2/taxlots/{id}/pair/,put,200,-id--data-,"Pair a property to this taxlot
+---",Pair a property to this taxlot,-v2-
+/api/v2/taxlots/{id}/properties/,get,200,-id-,Get related properties for this tax lot,Get related properties for this tax lot,-v2-
+/api/v2/taxlots/{id}/unmerge/,post,201,-id--data-,"Unmerge a taxlot view into two taxlot views
+---",Unmerge a taxlot view into two taxlot views,-v2-
+/api/v2/taxlots/{id}/unpair/,put,200,-id--data-,"Unpair a property from this taxlot
+---",Unpair a property from this taxlot,-v2-
+/api/v2/ubid/decode_by_ids/,post,201,,,,-v2-
+/api/v2/ubid/decode_results/,post,201,,,,-v2-
+/api/v2/upload/,post,201,,"Upload a new file to an import_record. This is a multipart/form upload.
+---",Upload a new file to an import_record. This is a multipart/form upload.,-v2-
+/api/v2/upload/create_from_pm_import/,post,201,,Create an import_record from a PM import request.,Create an import_record from a PM import request.,-v2-
+/api/v2/users/,get,200,,"Retrieves all users' email addresses and IDs.
+Only usable by superusers.
+---",Retrieves all users' email addresses and IDs.,-v2-
+/api/v2/users/,post,201,,"Creates a new SEED user.  One of 'organization_id' or 'org_name' is needed.
+Sends invitation email to the new user.
+---",Creates a new SEED user.  One of 'organization_id' or 'org_name' is needed.,-v2-
+/api/v2/users/current_user_id/,get,200,,"Returns the id (primary key) for the current user to allow it
+to be passed to other user related endpoints
+---",Returns the id (primary key) for the current user to allow it,-v2-
+/api/v2/users/{id}/,get,200,-id-,"Retrieves the a user's first_name, last_name, email
+and api key if exists by user ID (pk).
+---","Retrieves the a user's first_name, last_name, email",-v2-
+/api/v2/users/{id}/,put,200,-id-,"Updates the user's first name, last name, and email
+---","Updates the user's first name, last name, and email",-v2-
+/api/v2/users/{id}/default_organization/,put,200,-id-,"Sets the user's default organization
+---",Sets the user's default organization,-v2-
+/api/v2/users/{id}/generate_api_key/,get,200,-id-,"Generates a new API key
+---",Generates a new API key,-v2-
+/api/v2/users/{id}/is_authorized/,post,201,-id-,"Checks the auth for a given action, if user is the owner of the parent
+org then True is returned for each action
+---","Checks the auth for a given action, if user is the owner of the parent",-v2-
+/api/v2/users/{id}/set_password/,put,200,-id-,"sets/updates a user's password, follows the min requirement of
+django password validation settings in config/settings/common.py
+---","sets/updates a user's password, follows the min requirement of",-v2-
+/api/v2/users/{id}/shared_buildings/,get,200,-id-,"Get the request user's ``show_shared_buildings`` attr
+---",Get the request user's ``show_shared_buildings`` attr,-v2-
+/api/v2/users/{id}/update_role/,put,200,-id-,"Updates a user's role within an organization.
+---",Updates a user's role within an organization.,-v2-
+/api/v2/version/,get,200,,Returns the SEED version and current git sha,Returns the SEED version and current git sha,-v2-
