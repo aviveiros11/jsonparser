@@ -5,4 +5,4 @@ python:
   - "3.4"
 
 script:
-  - python parser.py
+  - python test.py
