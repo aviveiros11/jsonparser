@@ -35,6 +35,7 @@ def get_tags(tags):
     return out_str
 
 
+# Need to change this logic into something slicker
 def handle_cases(api_definition):
     if RESPONSE in api_definition:
         row.append(get_response(api_definition[RESPONSE]))
@@ -84,9 +85,3 @@ def parse(file):
 
 write_to_csv(headers, csv_file)
 parse(json_file)
-
-
-
-
-
-
