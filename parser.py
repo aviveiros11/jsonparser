@@ -19,7 +19,7 @@ def get_params(param_list):
     out_str = ''
     for item in param_list:
         if PARAM_KEY in item:
-            out_str += '-{}-'.format(item[PARAM_KEY])
+            out_str += '{}'.format(item[PARAM_KEY])
     return out_str
 
 
@@ -31,7 +31,7 @@ def get_response(responses):
 def get_tags(tags):
     out_str = ''
     for tag in tags:
-        out_str += '-{}-'.format(tag)
+        out_str += '{}'.format(tag)
     return out_str
 
 
